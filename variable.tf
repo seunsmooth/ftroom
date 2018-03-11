@@ -6,7 +6,7 @@ variable "ami_id"        {
 }
 
 variable "infra_bucket" {
-  default = "elk-terraform-remote-state-storage-s3"
+  default = "ft-terraform-remote-s3"
 }
 
 variable "key_name"     {}
