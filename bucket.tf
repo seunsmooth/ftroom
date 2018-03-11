@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "terraform-state-storage-s3" {
-    bucket = "ft-terraform-remote-s3"
+    bucket = "elk-terraform-remote-state-storage-s3"
 
     versioning {
       enabled = true
