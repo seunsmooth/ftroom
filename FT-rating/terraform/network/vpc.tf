@@ -3,13 +3,13 @@ provider "aws" {
   profile  = "${var.profile}"
 }
 
-#####Create VPC  for ELK ##################
+#####Create VPC  for ft ##################
 
-resource "aws_vpc" "elk" {
+resource "aws_vpc" "ft" {
   cidr_block = "10.0.0.0/24"
 
   tags {
-    Name = "ELK VPC"
+    Name = "ft VPC"
   }
 }
 
@@ -17,22 +17,22 @@ resource "aws_vpc" "elk" {
 ############# we wiill be provisioning 2 subnets; private and public  ################
 
 
-resource "aws_subnet" "elkpublic_subnet" {
-  vpc_id     = "${aws_vpc.elk.id}"
+resource "aws_subnet" "ftpublic_subnet" {
+  vpc_id     = "${aws_vpc.eft.id}"
   cidr_block = "10.0.0.0/28"
 
   tags {
-    Name = "ELK_Public"
+    Name = "FT_Public"
   }
 }
 
 
 resource "aws_subnet" "elkprivate_subnet" {
-  vpc_id     = "${aws_vpc.elk.id}"
+  vpc_id     = "${aws_vpc.ft.id}"
   cidr_block = "10.0.0.112/28"
 
   tags {
-    Name = "ELK_Private"
+    Name = "FT_Private"
   }
 }
 

@@ -4,21 +4,21 @@ data "template_file" "elastic_data" {
 }
 
 
-data "template_file" "kibana_data" {
-  template = "${file("template/kibana-data.tpl")}"
+data "template_file" "blue_data" {
+  template = "${file("template/blue-data.tpl")}"
 
 }
 
-resource "aws_instance" "Elasticsearch" {
+resource "aws_instance" "Bluezone" {
   instance_type               = "t2.micro"
   ami                         = "${var.ami_id}"
   instance_type               = "${var.instance_type}"
   associate_public_ip_address = true 
   ebs_optimized               = false
   key_name                    = "${var.key_name}"
-  user_data                   = "${data.template_file.elastic_data.rendered}"
+  user_data                   = "${data.template_file.blue_data.rendered}"
  #user_data                   = "${template_file.elastic_data.rendered}"
-  subnet_id                   = "${data.terraform_remote_state.network_info.aws_elk_public_subnet}"
+  subnet_id                   = "${data.terraform_remote_state.network_info.aws_ft_public_subnet}"
   vpc_security_group_ids      = ["${aws_security_group.elasticsearch_allow.id}"]
 
   tags {

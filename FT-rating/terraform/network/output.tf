@@ -1,9 +1,9 @@
-output "elkvpc" {
-    value =  "${aws_vpc.elk.id}"
+output "ftvpc" {
+    value =  "${aws_vpc.ft.id}"
 }  
 
 
-output "aws_elk_public_subnet" {
-    value =  "${aws_subnet.elkpublic_subnet.id}"
+output "aws_ft_public_subnet" {
+    value =  "${aws_subnet.ftpublic_subnet.id}"
 }  
 

@@ -3,16 +3,16 @@
 #### public routing####
 
 resource "aws_internet_gateway" "public_access" {
-  vpc_id = "${aws_vpc.elk.id}"
+  vpc_id = "${aws_vpc.ft.id}"
 
   tags {
-    Name = "ELK Gateway"
+    Name = "FT Gateway"
   }
 }
 
 
 resource "aws_route_table" "public_routing" {
-  vpc_id = "${aws_vpc.elk.id}"
+  vpc_id = "${aws_vpc.ft.id}"
 
   route {
     cidr_block = "0.0.0.0/0"
@@ -20,7 +20,7 @@ resource "aws_route_table" "public_routing" {
   }
 
   tags {
-    Name = "ELK Public Routing"
+    Name = "FT Public Routing"
   }
 }
 
@@ -28,7 +28,7 @@ resource "aws_route_table" "public_routing" {
 ## associate with public subnet
 
 resource "aws_route_table_association" "public_Subnet_association" {
-  subnet_id      = "${aws_subnet.elkpublic_subnet.id}"
+  subnet_id      = "${aws_subnet.ftpublic_subnet.id}"
   route_table_id = "${aws_route_table.public_routing.id}"
 
 }
@@ -36,10 +36,10 @@ resource "aws_route_table_association" "public_Subnet_association" {
 
 ### private routing
 resource "aws_route_table" "private_routing" {
-  vpc_id = "${aws_vpc.elk.id}"
+  vpc_id = "${aws_vpc.ft.id}"
 
   tags {
-    Name = "ELK Private Routing"
+    Name = "`ft Private Routing"
   }
 }
 
@@ -47,7 +47,7 @@ resource "aws_route_table" "private_routing" {
 ## associate with public subnet
 
 resource "aws_route_table_association" "private_Subnet_association" {
-  subnet_id      = "${aws_subnet.elkprivate_subnet.id}"
+  subnet_id      = "${aws_subnet.ftprivate_subnet.id}"
   route_table_id = "${aws_route_table.private_routing.id}"
 
 }

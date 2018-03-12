@@ -1,13 +1,13 @@
-output "elasticsearch nodes" {
+output "blue  nodes" {
   value = "${aws_instance.Elasticsearch.public_ip}"
 }
 
 
-output "kibana nodes" {
+output " greem  nodes" {
   value = "${aws_instance.kibana.public_ip}"
 }
 
-#output "elasticsearch private nodes" {
+#output "ft  private nodes" {
 #  value = "${aws_instance.Elasticsearch.private_ip}"
 #
 #}
